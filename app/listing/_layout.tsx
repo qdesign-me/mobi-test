@@ -1,7 +1,9 @@
+import { Slot } from 'expo-router';
 import React from 'react';
+import { Text } from 'react-native';
 
 function Layout() {
-  return <div>Layout</div>;
+  return <Slot />;
 }
 
 export default Layout;

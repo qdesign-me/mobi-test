@@ -7,6 +7,7 @@ import { Ionicons } from '@expo/vector-icons';
 import Colors from '@/constants/Colors';
 import ModalHeaderText from '@/components/ModalHeaderText';
 import { TouchableOpacity } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const CLERK_PUBLISHABLE_KEY = 'pk_test_Z29sZGVuLWdvc2hhd2stMTMuY2xlcmsuYWNjb3VudHMuZGV2JA'; //process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 console.log(CLERK_PUBLISHABLE_KEY);
@@ -71,48 +72,52 @@ function RootLayoutNav() {
     }
   }, [isLoaded]);
 
+  console.log({ isSignedIn });
+
   return (
-    <Stack>
-      <Stack.Screen
-        name="(modals)/login"
-        options={{
-          presentation: 'modal',
-          title: 'Log in or sign up',
-          headerTitleStyle: {
-            fontFamily: 'mon-sb',
-          },
-          headerLeft: () => (
-            <TouchableOpacity onPress={() => router.back()}>
-              <Ionicons name="close-outline" size={28} />
-            </TouchableOpacity>
-          ),
-        }}
-      />
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      <Stack.Screen name="listing/[id]" options={{ headerTitle: '' }} />
-      <Stack.Screen
-        name="(modals)/booking"
-        options={{
-          presentation: 'transparentModal',
-          animation: 'fade',
-          headerTransparent: true,
-          headerTitle: (props) => <ModalHeaderText />,
-          headerLeft: () => (
-            <TouchableOpacity
-              onPress={() => router.back()}
-              style={{
-                backgroundColor: '#fff',
-                borderColor: Colors.grey,
-                borderRadius: 20,
-                borderWidth: 1,
-                padding: 4,
-              }}
-            >
-              <Ionicons name="close-outline" size={22} />
-            </TouchableOpacity>
-          ),
-        }}
-      />
-    </Stack>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <Stack>
+        <Stack.Screen
+          name="(modals)/login"
+          options={{
+            presentation: 'modal',
+            title: 'Log in or sign up',
+            headerTitleStyle: {
+              fontFamily: 'mon-sb',
+            },
+            headerLeft: () => (
+              <TouchableOpacity onPress={() => router.back()}>
+                <Ionicons name="close-outline" size={28} />
+              </TouchableOpacity>
+            ),
+          }}
+        />
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="listing/[id]" options={{ headerTitle: '' }} />
+        <Stack.Screen
+          name="(modals)/booking"
+          options={{
+            presentation: 'transparentModal',
+            animation: 'fade',
+            headerTransparent: true,
+            headerTitle: (props) => <ModalHeaderText />,
+            headerLeft: () => (
+              <TouchableOpacity
+                onPress={() => router.back()}
+                style={{
+                  backgroundColor: '#fff',
+                  borderColor: Colors.grey,
+                  borderRadius: 20,
+                  borderWidth: 1,
+                  padding: 4,
+                }}
+              >
+                <Ionicons name="close-outline" size={22} />
+              </TouchableOpacity>
+            ),
+          }}
+        />
+      </Stack>
+    </GestureHandlerRootView>
   );
 }

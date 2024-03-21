@@ -1,7 +1,8 @@
 import React from 'react';
+import { Text } from 'react-native';
 
 function Page() {
-  return <div>Page</div>;
+  return <Text>Page</Text>;
 }
 
 export default Page;
