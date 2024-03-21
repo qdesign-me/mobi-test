@@ -31,7 +31,6 @@ const DetailsPage = () => {
     navigation.setOptions({
       headerTitle: '',
       headerTransparent: true,
-
       headerBackground: () => <Animated.View style={[headerAnimatedStyle, styles.header]}></Animated.View>,
       headerRight: () => (
         <View style={styles.bar}>
